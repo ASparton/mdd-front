@@ -1,0 +1,31 @@
+.pageContainer {
+    @apply h-screen flex justify-center;
+}
+
+.leftContainer {
+    @apply w-full bg-gradient-to-r from-teal-400 to-green-500 flex flex-col justify-between items-center font-signika text-slate-100;
+}
+
+.titleContainer {
+    @apply flex flex-col justify-center items-center mt-40;
+}
+
+.title {
+    @apply font-extrabold text-mamouth;
+}
+
+.comment {
+    @apply font-light text-xl;
+}
+
+.mention {
+    @apply text-gray-100 font-light mb-6;
+}
+
+.portfolioLink {
+    @apply font-semibold;
+}
+
+.portfolioLink:hover {
+    @apply text-white;
+}

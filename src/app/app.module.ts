@@ -4,22 +4,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
 // Primeng components
-import { ButtonModule } from 'primeng/button';
+import { TabMenuModule } from 'primeng/tabmenu';
 
 // Developed components
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { LoginRegisterComponent } from './home/login-register/login-register.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: HomeComponent }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    LoginRegisterComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
 
-    ButtonModule
+    TabMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
