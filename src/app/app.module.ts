@@ -12,28 +12,25 @@ import { ButtonModule } from 'primeng/button';
 
 // Developed components
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './home/login/login.component';
-import { RegisterComponent } from './home/register/register.component';
+import { RegisterComponent } from './register/register.component';
+import { RegisterFormComponent } from './register/registerForm/registerForm.component';
+import { LoginComponent } from './login/login.component';
+import { LoginFormComponent } from './login/loginForm/loginForm.component';
 import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
-  { 
-    path: '', 
-    component: HomeComponent, 
-    children: [
-      { path: 'login', component: LoginComponent }
-    ] 
-  },
+  { path: '', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'test', component: TestComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    LoginComponent,
     RegisterComponent,
+    RegisterFormComponent,
+    LoginComponent,
+    LoginFormComponent,
     TestComponent
   ],
   imports: [

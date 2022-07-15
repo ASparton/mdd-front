@@ -1,0 +1,22 @@
+<section class="loginContainer">
+    <h2 class="title">Log in</h2>
+  
+    <form class="form" (ngSubmit)="onSubmit()">
+      <div class="fieldContainer">
+        <label for="emailInput" class="label">Email</label>
+        <input type="text" id="emailInput" pInputText required v
+               #emailInput (change)="onEmailChange(emailInput.value)" />
+        <small *ngIf="invalidEmail" class="formError">The email is invalid</small>
+      </div>
+  
+      <div class="fieldContainer">
+        <label for="passwordInput" class="label">Password</label>
+        <input type="password" id="passwordInput" pPassword [feedback]="false" required
+               #pswdInput (change)="onPasswordChange(pswdInput.value)" />
+      </div>
+  
+      <button type="submit" pButton label="Log in" class="submitBtn" [disabled]="!formIsValid()"></button>
+    </form>
+  
+    <a routerLink="" class="registerLink">You do not yet have an account? Register here</a>
+  </section>

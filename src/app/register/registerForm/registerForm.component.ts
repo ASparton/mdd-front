@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
+import { CommonInputValidationService } from 'src/app/commonInputValidation.service';
 
 @Component({
-  selector: 'register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'register-form',
+  templateUrl: './registerForm.component.html',
+  styleUrls: ['./registerForm.component.css']
 })
-export class RegisterComponent {
-  static readonly emailRegex: RegExp = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+export class RegisterFormComponent {
+  constructor(private inputValidationService: CommonInputValidationService) {}
 
   // Form inputs value
   username: string = '';
@@ -15,19 +16,19 @@ export class RegisterComponent {
   confirmPassword: string = '';
 
   // Input validation
-  missingFields: boolean = true;
   usernameUnavailable: boolean = false;
   invalidEmail: boolean = false;
   passwordsDifferent: boolean = false;
 
   /**
    * Check whether there is a missing fields or not in the form.
+   * @returns true if there is at least one empty field, false otherwise.
    */
-  checkMissingFields(): void {
-    this.missingFields = this.username.length === 0 || 
-                         this.email.length === 0 || 
-                         this.password.length === 0 || 
-                         this.confirmPassword.length === 0;
+  checkMissingFields(): boolean {
+    return this.username.length === 0 || 
+           this.email.length === 0 || 
+           this.password.length === 0 || 
+           this.confirmPassword.length === 0;
   }
 
   /**
@@ -35,7 +36,7 @@ export class RegisterComponent {
    * @returns true if the form is valid, false otherwise.
    */
   formIsValid(): boolean {
-    return !this.missingFields && !this.usernameUnavailable && !this.invalidEmail && !this.passwordsDifferent;
+    return !this.checkMissingFields() && !this.usernameUnavailable && !this.invalidEmail && !this.passwordsDifferent;
   }
 
   // Get input functions
@@ -46,7 +47,7 @@ export class RegisterComponent {
   }
   onEmailChange(newValue: string): void {
     this.email = newValue;
-    this.invalidEmail = !RegisterComponent.emailRegex.test(this.email);
+    this.invalidEmail = !this.inputValidationService.isEmailValid(this.email);
     this.checkMissingFields();
   }
   onPasswordChange(newValue: string): void { 

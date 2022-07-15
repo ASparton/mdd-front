@@ -1,0 +1,34 @@
+.loginContainer {
+  @apply h-full mx-10 font-signika flex flex-col items-center justify-center;
+}
+
+.title {
+  @apply text-4xl font-bold;
+}
+
+.form {
+  @apply w-1/2 mb-5 flex flex-col items-center;
+}
+
+.fieldContainer {
+  @apply flex flex-col mt-3 w-full;
+}
+
+.label {
+  @apply text-lg;
+}
+
+.submitBtn {
+  @apply mt-10 w-1/2;
+}
+
+.formError {
+  @apply text-red-600;
+}
+
+.registerLink {
+  @apply cursor-pointer;
+}
+.registerLink:hover {
+  @apply text-teal-500;
+}
