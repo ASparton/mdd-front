@@ -4,7 +4,14 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        signika: ['Signika']
+      },
+      fontSize: {
+        mamouth: '6rem',
+      }
+    },
   },
   plugins: [],
 }
