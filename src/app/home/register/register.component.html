@@ -1,0 +1,36 @@
+<section class="registrationContainer">
+  <h2 class="title">Register</h2>
+
+  <form class="form" (ngSubmit)="onSubmit()">
+    <div class="fieldContainer">
+      <label for="usernameInput" class="label">Username</label>
+      <input type="text" id="usernameInput" pInputText required
+             #usernameInput (change)="onUsernameChange(usernameInput.value)" />
+      <small *ngIf="usernameUnavailable" class="formError">This username is already in use</small>
+    </div>
+    
+    <div class="fieldContainer">
+      <label for="emailInput" class="label">Email</label>
+      <input type="text" id="emailInput" pInputText required v
+             #emailInput (change)="onEmailChange(emailInput.value)" />
+      <small *ngIf="invalidEmail" class="formError">The email is invalid</small>
+    </div>
+
+    <div class="fieldContainer">
+      <label for="passwordInput" class="label">Password</label>
+      <input type="password" id="passwordInput" pPassword [feedback]="false" required
+             #pswdInput (change)="onPasswordChange(pswdInput.value)" />
+    </div>
+
+    <div class="fieldContainer">
+        <label for="confirmPasswordInput" class="label">Confirm password</label>
+        <input type="password" id="confirmPasswordInput" pPassword [feedback]="false" required
+               #confirmPswdInput (input)="onConfirmPasswordChange(confirmPswdInput.value)" />
+        <small *ngIf="passwordsDifferent" class="formError">The two passwords must be the same</small>
+    </div>
+
+    <button type="submit" pButton label="Register" class="submitBtn" [disabled]="!formIsValid()"></button>
+  </form>
+
+  <a routerLink="login" class="loginLink">You already have an account? Log in here</a>
+</section>
