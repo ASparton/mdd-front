@@ -1,12 +1,12 @@
 <section class="registrationContainer">
   <h2 class="title">Register</h2>
 
-  <form class="form" (ngSubmit)="onSubmit()">
+  <form class="form">
     <div class="fieldContainer">
       <label for="usernameInput" class="label">Username</label>
       <input type="text" id="usernameInput" pInputText required
              #usernameInput (change)="onUsernameChange(usernameInput.value)" />
-      <small *ngIf="usernameUnavailable" class="formError">This username is already in use</small>
+      <small *ngIf="!usernameAvailable" class="formError">This username is already in use</small>
     </div>
     
     <div class="fieldContainer">
@@ -14,6 +14,7 @@
       <input type="text" id="emailInput" pInputText required v
              #emailInput (change)="onEmailChange(emailInput.value)" />
       <small *ngIf="invalidEmail" class="formError">The email is invalid</small>
+      <small *ngIf="!emailAvailable" class="formError">The email is already in use</small>
     </div>
 
     <div class="fieldContainer">
@@ -29,7 +30,7 @@
         <small *ngIf="passwordsDifferent" class="formError">The two passwords must be the same</small>
     </div>
 
-    <button type="submit" pButton label="Register" class="submitBtn" [disabled]="!formIsValid()"></button>
+    <button type="submit" label="Register" pButton class="submitBtn" [disabled]="!formIsValid()" (click)="onSubmit()"></button>
   </form>
 
   <a routerLink="login" class="loginLink">You already have an account? Log in here</a>
