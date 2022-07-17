@@ -16,11 +16,13 @@ import { RegisterComponent } from './register/register.component';
 import { RegisterFormComponent } from './register/registerForm/registerForm.component';
 import { LoginComponent } from './login/login.component';
 import { LoginFormComponent } from './login/loginForm/loginForm.component';
+import { ServerErrorComponent } from './serverError/serverError.component';
 import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
   { path: '', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'internal-server-error', component: ServerErrorComponent },
   { path: 'test', component: TestComponent }
 ];
 
@@ -31,6 +33,7 @@ const routes: Routes = [
     RegisterFormComponent,
     LoginComponent,
     LoginFormComponent,
+    ServerErrorComponent,
     TestComponent
   ],
   imports: [
