@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { CommonInputValidationService } from 'src/app/commonInputValidation.service';
+
+// Services
+import { ApiService } from 'src/app/services/api.service';
+import { CommonInputValidationService } from 'src/app/services/commonInputValidation.service';
 
 @Component({
   selector: 'register-form',
@@ -7,8 +10,6 @@ import { CommonInputValidationService } from 'src/app/commonInputValidation.serv
   styleUrls: ['./registerForm.component.css']
 })
 export class RegisterFormComponent {
-  constructor(private inputValidationService: CommonInputValidationService) {}
-
   // Form inputs value
   username: string = '';
   email: string = '';
@@ -16,9 +17,15 @@ export class RegisterFormComponent {
   confirmPassword: string = '';
 
   // Input validation
-  usernameUnavailable: boolean = false;
   invalidEmail: boolean = false;
   passwordsDifferent: boolean = false;
+  usernameAvailable: boolean = true;
+  emailAvailable: boolean = true;
+
+  constructor(private inputValidationService: CommonInputValidationService,
+              private apiService: ApiService) {}
+
+  // Input validation functions
 
   /**
    * Check whether there is a missing fields or not in the form.
@@ -36,13 +43,12 @@ export class RegisterFormComponent {
    * @returns true if the form is valid, false otherwise.
    */
   formIsValid(): boolean {
-    return !this.checkMissingFields() && !this.usernameUnavailable && !this.invalidEmail && !this.passwordsDifferent;
+    return !this.checkMissingFields() && !this.invalidEmail && !this.passwordsDifferent;
   }
 
   // Get input functions
   onUsernameChange(newValue: string): void {
     this.username = newValue;
-    // TODO: Check username availability
     this.checkMissingFields();
   }
   onEmailChange(newValue: string): void {
@@ -62,6 +68,30 @@ export class RegisterFormComponent {
 
   // Form submit
   onSubmit(): void {
-    // TODO : Register user
+    if (this.formIsValid()) {
+      this.apiService.areUserIdentifiersAvailable(this.username, this.email)
+        .then((response) => {
+          this.usernameAvailable = response.data.username === 1;
+          this.emailAvailable = response.data.email === 1; 
+          if (this.usernameAvailable && this.emailAvailable)
+            this.registerUser();
+        })
+        .catch(error => {
+          console.log(error);
+          // TODO: Redirect to error page
+        });
+    }
+  }
+
+  private registerUser(): void {
+    this.apiService.registerUser(this.username, this.email, this.password)
+      .then(response => {
+        console.log('User id: ' + response.data.insertedId);
+        // TODO: Authenticate user & redirect to profile setup
+      })
+      .catch(error => { 
+        console.log(error);
+        // TODO: Redirect to error page
+      });
   }
 }

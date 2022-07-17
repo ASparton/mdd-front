@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonInputValidationService } from 'src/app/commonInputValidation.service';
+import { CommonInputValidationService } from 'src/app/services/commonInputValidation.service';
 
 @Component({
   selector: 'login-form',
