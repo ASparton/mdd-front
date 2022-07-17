@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 // Services
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { CommonInputValidationService } from 'src/app/services/commonInputValidation.service';
 
@@ -22,7 +23,8 @@ export class RegisterFormComponent {
   usernameAvailable: boolean = true;
   emailAvailable: boolean = true;
 
-  constructor(private inputValidationService: CommonInputValidationService,
+  constructor(private router: Router,
+              private inputValidationService: CommonInputValidationService,
               private apiService: ApiService) {}
 
   // Input validation functions
@@ -76,10 +78,7 @@ export class RegisterFormComponent {
           if (this.usernameAvailable && this.emailAvailable)
             this.registerUser();
         })
-        .catch(error => {
-          console.log(error);
-          // TODO: Redirect to error page
-        });
+        .catch(_ => this.router.navigate(['/internal-server-error']));
     }
   }
 
@@ -89,9 +88,6 @@ export class RegisterFormComponent {
         console.log('User id: ' + response.data.insertedId);
         // TODO: Authenticate user & redirect to profile setup
       })
-      .catch(error => { 
-        console.log(error);
-        // TODO: Redirect to error page
-      });
+      .catch(_ => this.router.navigate(['/internal-server-error']));
   }
 }
