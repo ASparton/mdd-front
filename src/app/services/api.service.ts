@@ -7,8 +7,8 @@ import axios from 'axios';
 export class ApiService {
   private static readonly API_URL = 'http://localhost:3000/';
 
-  public areUserIdentifiersAvailable(username: string, email: string) {
-    return axios.post(ApiService.API_URL + 'users?username=' + username + '&email=' + email);
+  public areUserIdsAvailable(username: string, email: string) {
+    return axios.get(ApiService.API_URL + 'users/availability?username=' + username + '&email=' + email);
   }
 
   /**
