@@ -16,20 +16,20 @@ import { RegisterComponent } from './register/register.component';
 import { RegisterFormComponent } from './register/registerForm/registerForm.component';
 import { LoginComponent } from './login/login.component';
 import { LoginFormComponent } from './login/loginForm/loginForm.component';
-import { ProfileSetupComponent } from './profile/setup/profileSetup.component';
+import { ProfileSetupComponent } from './profileSetup/profileSetup.component';
+import { FeedComponent } from './home/feed/feed.component';
 import { ServerErrorComponent } from './serverError/serverError.component';
 import { TestComponent } from './test/test.component';
+
+// Routes guards
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { 
-    path: 'profile', 
-    children: [
-      { path: 'setup', component: ProfileSetupComponent }
-    ]
-  },
+  { path: 'profile-setup', component: ProfileSetupComponent, canActivate: [AuthGuard] },
+  { path: 'feed', component: FeedComponent, canActivate: [AuthGuard] },
   { path: 'internal-server-error', component: ServerErrorComponent },
   { path: 'test', component: TestComponent }
 ];
@@ -42,6 +42,7 @@ const routes: Routes = [
     LoginComponent,
     LoginFormComponent,
     ProfileSetupComponent,
+    FeedComponent,
     ServerErrorComponent,
     TestComponent
   ],

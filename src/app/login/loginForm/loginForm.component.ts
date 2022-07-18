@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+// Services
+import { ApiAuthService } from 'src/app/services/apiAuth.service';
 import { CommonInputValidationService } from 'src/app/services/commonInputValidation.service';
 
 @Component({
@@ -7,7 +11,9 @@ import { CommonInputValidationService } from 'src/app/services/commonInputValida
   styleUrls: ['./loginForm.component.css']
 })
 export class LoginFormComponent {
-  constructor(private inputValidationService: CommonInputValidationService) {}
+  constructor(private inputValidationService: CommonInputValidationService,
+              private apiService: ApiAuthService,
+              private router: Router) {}
 
   // Inputs
   email: string = '';
@@ -15,6 +21,7 @@ export class LoginFormComponent {
 
   // Input validation
   invalidEmail: boolean = false;
+  loginErrorMessage: string = '';
 
   /**
    * Check whether there is a missing fields or not in the form.
@@ -36,17 +43,34 @@ export class LoginFormComponent {
   onEmailChange(newValue: string): void {
     this.email = newValue;
     this.invalidEmail = !this.inputValidationService.isEmailValid(this.email);
+    if (this.loginErrorMessage.length > 0) this.loginErrorMessage = '';
   }
   onPasswordChange(newValue: string): void {
     this.password = newValue;
+    if (this.loginErrorMessage.length > 0) this.loginErrorMessage = '';
   }
 
   /**
    * Try to log in the user with the given inputs.
    */
   onSubmit(): void {
-    console.log(this.email);
-    console.log(this.password);
-    // TODO: Log in logic
+    // Check form validity on front
+    if (this.formIsValid()) {
+      // Try to log in
+      this.apiService.login(this.email, this.password)
+        .then(response => {
+          // If successful, store the auth token and go to the feed page
+          localStorage.setItem('token', response.data.token);
+          this.router.navigate(['/feed']);
+        })
+        .catch(error => {
+          // Else check errors and indicate what is wrong to user
+          if (error.response.status === 404 || error.response.status === 400) {
+            this.loginErrorMessage = 'Wrong email or password'
+          } else {
+            this.router.navigate(['/internal-server-error']);
+          }
+        });
+    }
   }
 }
