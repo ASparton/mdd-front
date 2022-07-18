@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 // Services
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiAuthService } from 'src/app/services/apiAuth.service';
 import { CommonInputValidationService } from 'src/app/services/commonInputValidation.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class RegisterFormComponent {
 
   constructor(private router: Router,
               private inputValidationService: CommonInputValidationService,
-              private apiService: ApiService) {}
+              private apiService: ApiAuthService) {}
 
   // Input validation functions
 
@@ -88,10 +88,10 @@ export class RegisterFormComponent {
    * Add the user to the db. If the operation is successful, redirect to profile setup with the user id.
    */
   private registerUser(): void {
-    this.apiService.registerUser(this.username, this.email, this.password)
+    this.apiService.register(this.username, this.email, this.password)
       .then(response => {
         localStorage.setItem('token', response.data.token);
-        this.router.navigate(['/profile/setup']);
+        this.router.navigate(['/profile-setup']);
       })
       .catch(_ => this.router.navigate(['/internal-server-error']));
   }
