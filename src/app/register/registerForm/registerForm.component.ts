@@ -71,7 +71,7 @@ export class RegisterFormComponent {
   // Form submit
   onSubmit(): void {
     if (this.formIsValid()) {
-      this.apiService.areUserIdentifiersAvailable(this.username, this.email)
+      this.apiService.areUserIdsAvailable(this.username, this.email)
         .then((response) => {
           this.usernameAvailable = response.data.username === 1;
           this.emailAvailable = response.data.email === 1; 
