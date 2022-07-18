@@ -16,12 +16,20 @@ import { RegisterComponent } from './register/register.component';
 import { RegisterFormComponent } from './register/registerForm/registerForm.component';
 import { LoginComponent } from './login/login.component';
 import { LoginFormComponent } from './login/loginForm/loginForm.component';
+import { ProfileSetupComponent } from './profile/setup/profileSetup.component';
 import { ServerErrorComponent } from './serverError/serverError.component';
 import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
-  { path: '', component: RegisterComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { 
+    path: 'profile', 
+    children: [
+      { path: 'setup', component: ProfileSetupComponent }
+    ]
+  },
   { path: 'internal-server-error', component: ServerErrorComponent },
   { path: 'test', component: TestComponent }
 ];
@@ -33,6 +41,7 @@ const routes: Routes = [
     RegisterFormComponent,
     LoginComponent,
     LoginFormComponent,
+    ProfileSetupComponent,
     ServerErrorComponent,
     TestComponent
   ],

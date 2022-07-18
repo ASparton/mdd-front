@@ -68,7 +68,9 @@ export class RegisterFormComponent {
     this.checkMissingFields();
   }
 
-  // Form submit
+  /**
+   * If the form front-end is valid, check if username & email are available, then register the user.
+   */
   onSubmit(): void {
     if (this.formIsValid()) {
       this.apiService.areUserIdsAvailable(this.username, this.email)
@@ -82,11 +84,14 @@ export class RegisterFormComponent {
     }
   }
 
+  /**
+   * Add the user to the db. If the operation is successful, redirect to profile setup with the user id.
+   */
   private registerUser(): void {
     this.apiService.registerUser(this.username, this.email, this.password)
       .then(response => {
-        console.log('User id: ' + response.data.insertedId);
-        // TODO: Authenticate user & redirect to profile setup
+        localStorage.setItem('token', response.data.token);
+        this.router.navigate(['/profile/setup']);
       })
       .catch(_ => this.router.navigate(['/internal-server-error']));
   }
