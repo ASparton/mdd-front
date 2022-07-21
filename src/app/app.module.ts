@@ -12,6 +12,7 @@ import { ButtonModule } from 'primeng/button';
 
 // Developed components
 import { AppComponent } from './app.component';
+import { RootRedirectionComponent } from './rootRedirection/rootRedirection.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterFormComponent } from './register/registerForm/registerForm.component';
 import { LoginComponent } from './login/login.component';
@@ -25,7 +26,7 @@ import { TestComponent } from './test/test.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', component: RootRedirectionComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile-setup', component: ProfileSetupComponent, canActivate: [AuthGuard] },
