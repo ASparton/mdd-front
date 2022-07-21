@@ -80,7 +80,7 @@ export class RegisterFormComponent {
           if (this.usernameAvailable && this.emailAvailable)
             this.registerUser();
         })
-        .catch(_ => this.router.navigate(['/internal-server-error']));
+        .catch(error => { console.log(error); this.router.navigate(['/internal-server-error']); });
     }
   }
 
