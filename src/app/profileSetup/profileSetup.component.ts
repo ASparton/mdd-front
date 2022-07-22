@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-
 // Services
 import { ApiAuthService } from '../services/apiAuth.service';
+import { ApiUserService } from '../services/apiUser.service';
 import { InputValidationService } from '../services/inputValidation.service';
+
+// Types
+import { UpdateUserQuery } from '../types/types';
 
 @Component({
     selector: 'profile-setup',
@@ -23,7 +26,8 @@ export class ProfileSetupComponent implements OnInit {
 
   constructor(private router: Router,
               private apiAuthService: ApiAuthService,
-              private inputValidationService: InputValidationService) {}
+              private inputValidationService: InputValidationService,
+              private apiUserService: ApiUserService) {}
 
   /**
    * Redirect user to needed pages if he does not have the required permissions.
@@ -48,8 +52,6 @@ export class ProfileSetupComponent implements OnInit {
    * @param event the upload event
    */
   onImageSelected(event: any): void {
-    console.log(event.target.files[0].size);
-
     if (event.target.files[0].size <= 200000) {
       this.profilePicTooLarge = false;
 
@@ -81,10 +83,14 @@ export class ProfileSetupComponent implements OnInit {
    */
   onContinueClick(): void {
     if (this.formIsValid()) {
-      // DO UPDATE
-      console.log(this.profilePicUrl);
-      console.log(this.displayedName);
-      console.log(this.bio);
+      // Build updates object
+      let updates: UpdateUserQuery = { displayedName: this.displayedName };
+      if (this.profilePicUrl) updates.profilePicture = this.profilePicUrl;
+      if (this.bio) updates.bio = this.bio;
+
+      this.apiUserService.updateUser(updates)
+        .then(_ => this.router.navigate(['/feed']))
+        .catch(_ => this.router.navigate(['/internal-server-error']));
     }
   }
 }

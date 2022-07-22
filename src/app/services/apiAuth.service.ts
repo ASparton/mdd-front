@@ -62,7 +62,7 @@ export class ApiAuthService {
         }
       };
       const response = await axios.get(ApiAuthService.API_URL + 'users/current', requestConfig);
-      return response.data.displayedName.length > 0;
+      return response.data.displayedName !== null;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         if (error.response.status === 500)
