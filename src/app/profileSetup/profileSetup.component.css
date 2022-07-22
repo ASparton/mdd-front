@@ -19,7 +19,7 @@
 }
 
 .formError {
-    @apply text-red-600 text-base;
+    @apply text-red-600 text-base mt-1;
 }
 
 .imageField {

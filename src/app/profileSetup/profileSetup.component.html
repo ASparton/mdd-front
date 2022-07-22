@@ -16,8 +16,12 @@
             <em pBadge class="mb-4 ml-4" value="i" pTooltip="This is the name that will be displayed to other users" tooltipPosition="top"></em>
         </label>
         <input pInputText type="text" id="displayedName" name="displayedName" maxlength="35"
-               #displayedNameInput (input)="onDisplayedNameChange(displayedNameInput.value)" placeholder="Your name" />
-        <small *ngIf="displayedNameWrong" class="formError mt-1">Please, enter a name.</small>
+               #displayedNameInput (change)="onDisplayedNameChange(displayedNameInput.value)" placeholder="Your name" />
+        <small *ngIf="invalidDisplayedName" class="formError">
+            Your name must contain:<br />
+            • Between 3 and 35 characters<br />
+            • Characters allowed: Letters, numbers, '-', '_' and one space
+        </small>
     </div>
 
     <div class="formField">

@@ -23,7 +23,7 @@
 }
 
 .formError {
-  @apply text-red-600;
+  @apply text-red-600 mt-1 text-base;
 }
 
 .loginLink {

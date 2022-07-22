@@ -7,9 +7,14 @@
         Username
         <em pBadge class="mb-4 ml-4" value="i" pTooltip="This will be used to identify your account and add friends" tooltipPosition="top"></em>
       </label>
-      <input type="text" id="usernameInput" pInputText required maxlength="35"
+      <input type="text" id="usernameInput" pInputText required minlength="3" maxlength="35"
              #usernameInput (change)="onUsernameChange(usernameInput.value)" />
       <small *ngIf="!usernameAvailable" class="formError">This username is already in use</small>
+      <small *ngIf="invalidUsername" class="formError">
+        Your username must contain:<br />
+        • Between 3 and 8 characters<br />
+        • Chracters allowed: Letters, number, '-' and '_'
+      </small>
     </div>
     
     <div class="fieldContainer">
@@ -22,8 +27,16 @@
 
     <div class="fieldContainer">
       <label for="passwordInput" class="label">Password</label>
-      <input type="password" id="passwordInput" pPassword [feedback]="false" required maxlength="100"
+      <input type="password" id="passwordInput" pPassword [feedback]="false" required minlength="8" maxlength="100"
              #pswdInput (change)="onPasswordChange(pswdInput.value)" />
+      <small *ngIf="invalidPassword" class="formError">
+        Your password must contain:<br />
+        • 8 characters<br />
+        • 1 uppercase letter<br />
+        • 1 lowercase letter<br />
+        • 1 number<br />
+        • 1 special character
+      </small>
     </div>
 
     <div class="fieldContainer">
