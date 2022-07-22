@@ -21,7 +21,7 @@ export class ProfileSetupComponent implements OnInit {
   bio: string = '';
 
   // Inputs validation
-  displayedNameWrong: boolean = false;
+  invalidDisplayedName: boolean = false;
   profilePicTooLarge: boolean = false;
 
   constructor(private router: Router,
@@ -41,7 +41,8 @@ export class ProfileSetupComponent implements OnInit {
   // Input changes
   onDisplayedNameChange(newValue: string): void {
     this.displayedName = newValue;
-    this.displayedNameWrong = this.displayedName.length === 0;
+    this.invalidDisplayedName = this.displayedName.length < 3 || this.displayedName.length > 35 ||
+                                !this.inputValidationService.isDisplayedNameValid(this.displayedName);
   }
   onBioChange(newValue: string): void {
     this.bio = newValue;
@@ -74,7 +75,7 @@ export class ProfileSetupComponent implements OnInit {
    * @returns true if displayed name not empty + profile pic is an image blob or null
    */
   formIsValid(): boolean {
-    return this.displayedName.length > 0 && 
+    return !this.invalidDisplayedName && this.displayedName.length > 0 &&
            (this.profilePicUrl === null || this.inputValidationService.isImageBlob(this.profilePicUrl));
   }
 

@@ -18,7 +18,9 @@ export class RegisterFormComponent {
   confirmPassword: string = '';
 
   // Input validation
+  invalidUsername: boolean = false;
   invalidEmail: boolean = false;
+  invalidPassword: boolean = false;
   passwordsDifferent: boolean = false;
   usernameAvailable: boolean = true;
   emailAvailable: boolean = true;
@@ -45,12 +47,14 @@ export class RegisterFormComponent {
    * @returns true if the form is valid, false otherwise.
    */
   formIsValid(): boolean {
-    return !this.checkMissingFields() && !this.invalidEmail && !this.passwordsDifferent;
+    return !this.checkMissingFields() && !this.invalidUsername && !this.invalidPassword && !this.invalidEmail && !this.passwordsDifferent;
   }
 
   // Get input functions
   onUsernameChange(newValue: string): void {
     this.username = newValue;
+    this.invalidUsername = !this.inputValidationService.isUsernameValid(this.username);
+    if (!this.usernameAvailable) this.usernameAvailable = true;
     this.checkMissingFields();
   }
   onEmailChange(newValue: string): void {
@@ -58,8 +62,9 @@ export class RegisterFormComponent {
     this.invalidEmail = !this.inputValidationService.isEmailValid(this.email);
     this.checkMissingFields();
   }
-  onPasswordChange(newValue: string): void { 
+  onPasswordChange(newValue: string): void {
     this.password = newValue;
+    this.invalidPassword = !this.inputValidationService.isPasswordValid(this.password);
     this.checkMissingFields();
   }
   onConfirmPasswordChange(newValue: string): void {
@@ -80,7 +85,7 @@ export class RegisterFormComponent {
           if (this.usernameAvailable && this.emailAvailable)
             this.registerUser();
         })
-        .catch(error => { console.log(error); this.router.navigate(['/internal-server-error']); });
+        .catch(_ => this.router.navigate(['/internal-server-error']));
     }
   }
 
