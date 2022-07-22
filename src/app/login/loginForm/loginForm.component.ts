@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 // Services
 import { ApiAuthService } from 'src/app/services/apiAuth.service';
-import { CommonInputValidationService } from 'src/app/services/commonInputValidation.service';
+import { InputValidationService } from 'src/app/services/inputValidation.service';
 
 @Component({
   selector: 'login-form',
@@ -11,7 +11,7 @@ import { CommonInputValidationService } from 'src/app/services/commonInputValida
   styleUrls: ['./loginForm.component.css']
 })
 export class LoginFormComponent {
-  constructor(private inputValidationService: CommonInputValidationService,
+  constructor(private inputValidationService: InputValidationService,
               private apiService: ApiAuthService,
               private router: Router) {}
 

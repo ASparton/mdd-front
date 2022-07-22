@@ -1,0 +1,43 @@
+.title {
+    @apply mt-10 mb-5 font-signika font-bold text-center text-6xl;
+}
+
+.form {
+    width: 25%;
+    margin-left: 37.5%;
+    margin-right: 37.5%;
+    @apply flex flex-col items-center font-signika;
+}
+
+.label {
+    @apply text-lg mb-1;
+}
+
+.formField {
+    width: 100%;
+    @apply mb-5 flex flex-col;
+}
+
+.formError {
+    @apply text-red-600 text-base;
+}
+
+.imageField {
+    @apply items-center;
+}
+
+.profilePic {
+    @apply w-56 h-56 rounded-full object-cover;
+}
+
+.ppLabel {
+    @apply mt-3 w-52 h-12 flex justify-evenly items-center bg-teal-400 rounded-md cursor-pointer text-slate-50;
+}
+
+.bioInput {
+    @apply resize-none;
+}
+
+.continueBtn {
+    @apply mt-2 w-1/2;
+}

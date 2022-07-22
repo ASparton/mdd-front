@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 // Services
 import { Router } from '@angular/router';
 import { ApiAuthService } from 'src/app/services/apiAuth.service';
-import { CommonInputValidationService } from 'src/app/services/commonInputValidation.service';
+import { InputValidationService } from 'src/app/services/inputValidation.service';
 
 @Component({
   selector: 'register-form',
@@ -24,7 +24,7 @@ export class RegisterFormComponent {
   emailAvailable: boolean = true;
 
   constructor(private router: Router,
-              private inputValidationService: CommonInputValidationService,
+              private inputValidationService: InputValidationService,
               private apiService: ApiAuthService) {}
 
   // Input validation functions

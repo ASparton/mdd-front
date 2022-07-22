@@ -1,1 +1,30 @@
-<p>Profile setup</p>
+<h2 class="title">Profile setup</h2>
+<form class="form">
+    <div class="formField imageField">
+        <img class="profilePic" alt="Profile picture" [src]="profilePicUrl || '../../assets/images/default-user.png'" />
+        <label class="ppLabel" for="ppInput">
+            <em class="pi pi-upload"></em>
+            Upload profile picture
+        </label>
+        <input class="hidden" type="file" accept="image/png, image/jpeg" id="ppInput" name="ppInput" (change)="onImageSelected($event)" />
+        <small *ngIf="profilePicTooLarge" class="formError mt-1">The selected image is too large.</small>
+    </div>
+
+    <div class="formField">
+        <label for="displayedName" class="label">
+            Name
+            <em pBadge class="mb-4 ml-4" value="i" pTooltip="This is the name that will be displayed to other users" tooltipPosition="top"></em>
+        </label>
+        <input pInputText type="text" id="displayedName" name="displayedName" maxlength="35"
+               #displayedNameInput (input)="onDisplayedNameChange(displayedNameInput.value)" placeholder="Your name" />
+        <small *ngIf="displayedNameWrong" class="formError mt-1">Please, enter a name.</small>
+    </div>
+
+    <div class="formField">
+        <label for="bio" class="label">Biography</label>
+        <textarea class="bioInput" id="bio" [rows]="8" [cols]="40" pInputTextarea placeholder="I love metal songs!"
+                  #bioInput (input)="onBioChange(bioInput.value)" maxlength="530"></textarea>
+    </div>
+
+    <button class="continueBtn" type="submit" pButton label="Continue" (click)="onContinueClick()" [disabled]="!formIsValid()"></button>
+</form>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 // Services
-import { ApiAuthService } from '../services/apiAuth.service';
+import { ApiAuthService } from './services/apiAuth.service';
 
 @Component({
   selector: 'root-redirection',

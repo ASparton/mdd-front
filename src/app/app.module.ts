@@ -9,10 +9,13 @@ import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TooltipModule } from 'primeng/tooltip';
+import { BadgeModule } from 'primeng/badge';
 
 // Developed components
 import { AppComponent } from './app.component';
-import { RootRedirectionComponent } from './rootRedirection/rootRedirection.component';
+import { RootRedirectionComponent } from './rootRedirection.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterFormComponent } from './register/registerForm/registerForm.component';
 import { LoginComponent } from './login/login.component';
@@ -53,8 +56,11 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FormsModule,
     InputTextModule,
+    InputTextareaModule,
     PasswordModule,
-    ButtonModule
+    ButtonModule,
+    BadgeModule,
+    TooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

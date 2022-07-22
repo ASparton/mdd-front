@@ -3,15 +3,18 @@
 
   <form class="form">
     <div class="fieldContainer">
-      <label for="usernameInput" class="label">Username</label>
-      <input type="text" id="usernameInput" pInputText required
+      <label for="usernameInput" class="label">
+        Username
+        <em pBadge class="mb-4 ml-4" value="i" pTooltip="This will be used to identify your account and add friends" tooltipPosition="top"></em>
+      </label>
+      <input type="text" id="usernameInput" pInputText required maxlength="35"
              #usernameInput (change)="onUsernameChange(usernameInput.value)" />
       <small *ngIf="!usernameAvailable" class="formError">This username is already in use</small>
     </div>
     
     <div class="fieldContainer">
       <label for="emailInput" class="label">Email</label>
-      <input type="text" id="emailInput" pInputText required v
+      <input type="text" id="emailInput" pInputText required maxlength="50"
              #emailInput (change)="onEmailChange(emailInput.value)" />
       <small *ngIf="invalidEmail" class="formError">The email is invalid</small>
       <small *ngIf="!emailAvailable" class="formError">The email is already in use</small>
@@ -19,13 +22,13 @@
 
     <div class="fieldContainer">
       <label for="passwordInput" class="label">Password</label>
-      <input type="password" id="passwordInput" pPassword [feedback]="false" required
+      <input type="password" id="passwordInput" pPassword [feedback]="false" required maxlength="100"
              #pswdInput (change)="onPasswordChange(pswdInput.value)" />
     </div>
 
     <div class="fieldContainer">
         <label for="confirmPasswordInput" class="label">Confirm password</label>
-        <input type="password" id="confirmPasswordInput" pPassword [feedback]="false" required
+        <input type="password" id="confirmPasswordInput" pPassword [feedback]="false" required maxlength="100"
                #confirmPswdInput (input)="onConfirmPasswordChange(confirmPswdInput.value)" />
         <small *ngIf="passwordsDifferent" class="formError">The two passwords must be the same</small>
     </div>

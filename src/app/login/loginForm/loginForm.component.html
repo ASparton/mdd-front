@@ -4,14 +4,14 @@
     <form class="form" (ngSubmit)="onSubmit()">
       <div class="fieldContainer">
         <label for="emailInput" class="label">Email</label>
-        <input type="text" id="emailInput" pInputText required v
+        <input type="text" id="emailInput" pInputText required maxlength="50"
                #emailInput (change)="onEmailChange(emailInput.value)" />
         <small *ngIf="invalidEmail" class="formError">The email is invalid</small>
       </div>
   
       <div class="fieldContainer">
         <label for="passwordInput" class="label">Password</label>
-        <input type="password" id="passwordInput" pPassword [feedback]="false" required
+        <input type="password" id="passwordInput" pPassword [feedback]="false" required maxlength="100"
                #pswdInput (input)="onPasswordChange(pswdInput.value)" />
       </div>
 
