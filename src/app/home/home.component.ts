@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router,
               private apiAuthService: ApiAuthService) {}
 
+  profilePictureUrl: string | null = null;
   userMenu: MenuItem[] = [
     {
       label: 'Account',
@@ -31,8 +32,11 @@ export class HomeComponent implements OnInit {
   
   ngOnInit(): void {
     // Check if fully authenticated
-    this.apiAuthService.isFullyAuthenticated()
-      .then(isFullyAuth => !isFullyAuth && this.router.navigate(['/profile-setup']))
+    this.apiAuthService.isFullyAuthenticated(true)
+      .then(user => {
+        if (user.displayedName === null) this.router.navigate(['/profile-setup']);
+        else this.profilePictureUrl = user.profilePicture;
+      })
       .catch(_ => this.router.navigate(['/internal-server-error']));
   }
 }

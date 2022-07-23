@@ -22,16 +22,12 @@
     @apply -translate-y-1 transition-all;
 }
 
-.ppContainer {
-    @apply w-14 h-14 rounded-full ml-3 cursor-pointer translate-y-0 transition-all;
+.profile-pic {
+    @apply w-14 h-14 rounded-full ml-3 cursor-pointer object-cover translate-y-0 transition-all;
 }
 
-.ppContainer:hover {
+.profile-pic:hover {
     @apply -translate-y-1 transition-all;
-}
-
-.profile-pic {  
-    @apply overflow-hidden;
 }
 
 .userMenu {

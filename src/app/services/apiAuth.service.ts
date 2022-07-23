@@ -59,7 +59,7 @@ export class ApiAuthService {
    * Check if the current user is fully authenticated or not, or redirect to logic pages if errors.
    * @returns a promise indicating if the user is fully authenticated or not.
    */
-  public async isFullyAuthenticated(): Promise<boolean> {
+  public async isFullyAuthenticated(withUser?: boolean): Promise<any> {
     if (!localStorage.getItem('token')) {
       this.router.navigate(['/login']);
       return false;
@@ -72,7 +72,7 @@ export class ApiAuthService {
         }
       };
       const response = await axios.get(ApiAuthService.API_URL + 'users/current', requestConfig);
-      return response.data.displayedName !== null;
+      return withUser ? response.data : response.data.displayedName !== null;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         if (error.response.status === 500)
