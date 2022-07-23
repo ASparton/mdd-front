@@ -1,0 +1,16 @@
+.app-menu-container {
+    @apply w-full flex justify-end bg-slate-50;
+}
+
+.link {
+    width: 33.33%;
+    @apply text-center;
+}
+
+.active {
+    @apply text-slate-50 bg-slate-700;
+}
+
+.link-logo {
+    @apply font-normal text-3xl py-2;
+}

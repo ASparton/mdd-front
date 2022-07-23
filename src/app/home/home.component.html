@@ -4,7 +4,7 @@
             <h3 class="mdd-title">My Daily Diary</h3>
         </div>
         <div class="right-menu">
-            <button type="button" class="pi pi-plus new-entry-btn"></button>
+            <button type="button" class="pi pi-plus new-entry-btn" (mouseenter)="menu.hide()"></button>
             <img src="../../assets/images/default-user.png" alt="Profile picture" class="profile-pic" 
                  (mouseenter)="menu.show($event)" />
             <p-menu #menu [popup]="true" [model]="userMenu" (mouseleave)="menu.hide()" [style]="{'margin-top': '3px'}"></p-menu>

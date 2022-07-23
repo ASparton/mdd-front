@@ -24,6 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginFormComponent } from './login/loginForm/loginForm.component';
 import { ProfileSetupComponent } from './profileSetup/profileSetup.component';
 import { HomeComponent } from './home/home.component';
+import { AppMenuComponent } from './home/appMenu/appMenu.component';
 import { AccountComponent } from './home/account/account.component';
 import { FeedComponent } from './home/feed/feed.component';
 import { DiaryComponent } from './home/diary/diary.component';
@@ -63,6 +64,7 @@ const routes: Routes = [
     LoginFormComponent,
     ProfileSetupComponent,
     HomeComponent,
+    AppMenuComponent,
     AccountComponent,
     FeedComponent,
     DiaryComponent,
