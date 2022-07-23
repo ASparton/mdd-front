@@ -18,7 +18,7 @@ export class RootRedirectionComponent implements OnInit {
    */
   ngOnInit() {
     this.apiAuthService.isFullyAuthenticated()
-    .then(isFullyAuth => isFullyAuth ? this.router.navigate(['/feed']) : this.router.navigate(['/profile-setup']))
+    .then(isFullyAuth => isFullyAuth ? this.router.navigate(['app/feed']) : this.router.navigate(['/profile-setup']))
     .catch(_ => this.router.navigate(['/internal-server-error']));
   }
 }

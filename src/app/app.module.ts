@@ -21,7 +21,11 @@ import { RegisterFormComponent } from './register/registerForm/registerForm.comp
 import { LoginComponent } from './login/login.component';
 import { LoginFormComponent } from './login/loginForm/loginForm.component';
 import { ProfileSetupComponent } from './profileSetup/profileSetup.component';
+import { HomeComponent } from './home/home.component';
+import { AccountComponent } from './home/account/account.component';
 import { FeedComponent } from './home/feed/feed.component';
+import { DiaryComponent } from './home/diary/diary.component';
+import { FriendsComponent } from './home/friends/friends.component';
 import { ServerErrorComponent } from './serverError/serverError.component';
 import { TestComponent } from './test/test.component';
 
@@ -33,7 +37,17 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile-setup', component: ProfileSetupComponent, canActivate: [AuthGuard] },
-  { path: 'feed', component: FeedComponent, canActivate: [AuthGuard] },
+  { 
+    path: 'app',
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'account', component: AccountComponent },
+      { path: 'feed', component: FeedComponent },
+      { path: 'diary', component: DiaryComponent },
+      { path: 'friends', component: FriendsComponent },
+    ]
+  },
   { path: 'internal-server-error', component: ServerErrorComponent },
   { path: 'test', component: TestComponent }
 ];
@@ -46,6 +60,11 @@ const routes: Routes = [
     LoginComponent,
     LoginFormComponent,
     ProfileSetupComponent,
+    HomeComponent,
+    AccountComponent,
+    FeedComponent,
+    DiaryComponent,
+    FriendsComponent,
     FeedComponent,
     ServerErrorComponent,
     TestComponent
