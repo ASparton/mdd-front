@@ -15,15 +15,23 @@
 }
 
 .new-entry-btn {
-    @apply text-2xl mr-1 p-2 px-3 rounded-lg font-extrabold transition-none;
+    @apply text-3xl mr-2 p-2 px-3 rounded-lg font-extrabold translate-y-0 transition-all;
 }
 
 .new-entry-btn:hover {
-    @apply transition-all duration-300 bg-teal-200 bg-opacity-40;
+    @apply -translate-y-1 transition-all;
 }
 
-.profile-pic {
-    @apply w-14 h-14 rounded-full ml-3 cursor-pointer;
+.ppContainer {
+    @apply w-14 h-14 rounded-full ml-3 cursor-pointer translate-y-0 transition-all;
+}
+
+.ppContainer:hover {
+    @apply -translate-y-1 transition-all;
+}
+
+.profile-pic {  
+    @apply overflow-hidden;
 }
 
 .userMenu {

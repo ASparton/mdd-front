@@ -10,6 +10,9 @@ module.exports = {
       },
       fontSize: {
         mamouth: '6rem',
+      },
+      borderWidth: {
+        3: '3px',
       }
     },
   },

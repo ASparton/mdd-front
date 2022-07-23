@@ -1,13 +1,13 @@
-<footer>
+<footer class="footer">
     <nav aria-label="App navigation" class="app-menu-container">
-        <a routerLink="/app/feed" [class]="activeTab === 1 ? 'link active' : 'link'">
-            <em class="pi pi-home link-logo"></em>
+        <a routerLink="/app/feed" class="link">
+            <em [class]="'pi pi-home link-logo ' + (activeTab === 1 ? 'active' : '')"></em>
         </a>
-        <a routerLink="/app/diary" [class]="activeTab === 2 ? 'link active' : 'link'">
-            <em class="pi pi-book link-logo"></em>
+        <a routerLink="/app/diary" class="link">
+            <em [class]="'pi pi-book link-logo ' + (activeTab === 2 ? 'active' : '')"></em>
         </a>
-        <a routerLink="/app/friends" [class]="activeTab === 3 ? 'link active' : 'link'">
-            <em class="pi pi-users link-logo"></em>
+        <a routerLink="/app/friends" class="link">
+            <em [class]="'pi pi-users link-logo ' + (activeTab === 3 ? 'active' : '')"></em>
         </a>
     </nav>
 </footer>
