@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Primeng components
 import { InputTextModule } from 'primeng/inputtext';
@@ -12,6 +13,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TooltipModule } from 'primeng/tooltip';
 import { BadgeModule } from 'primeng/badge';
+import { MenuModule } from 'primeng/menu';
 
 // Developed components
 import { AppComponent } from './app.component';
@@ -74,12 +76,14 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forRoot(routes),
     FormsModule,
+    BrowserAnimationsModule,
     InputTextModule,
     InputTextareaModule,
     PasswordModule,
     ButtonModule,
     BadgeModule,
     TooltipModule,
+    MenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

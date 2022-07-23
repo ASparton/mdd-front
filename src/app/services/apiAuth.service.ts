@@ -46,6 +46,16 @@ export class ApiAuthService {
   }
 
   /**
+   * Remove the auth token and redirect to login page.
+   */
+  public logout() {
+    if (localStorage.getItem('token'))
+      localStorage.removeItem('token');
+
+    this.router.navigate(['/login']);
+  }
+
+  /**
    * Check if the current user is fully authenticated or not, or redirect to logic pages if errors.
    * @returns a promise indicating if the user is fully authenticated or not.
    */
