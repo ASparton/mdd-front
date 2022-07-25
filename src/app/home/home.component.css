@@ -23,7 +23,7 @@
 }
 
 .profile-pic {
-    @apply w-14 h-14 rounded-full ml-3 cursor-pointer object-cover translate-y-0 transition-all;
+    @apply w-14 h-14 cursor-pointer;
 }
 
 .userMenu {

@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
               private apiAuthService: ApiAuthService) {}
 
   profilePictureUrl: string | null = null;
+  username: string = '';
   userMenu: MenuItem[] = [
     {
       label: 'Account',
@@ -35,7 +36,10 @@ export class HomeComponent implements OnInit {
     this.apiAuthService.isFullyAuthenticated(true)
       .then(user => {
         if (user.displayedName === null) this.router.navigate(['/profile-setup']);
-        else this.profilePictureUrl = user.profilePicture;
+        else {
+          this.profilePictureUrl = user.profilePicture;
+          this.username = user.username;
+        }
       })
       .catch(_ => this.router.navigate(['/internal-server-error']));
   }

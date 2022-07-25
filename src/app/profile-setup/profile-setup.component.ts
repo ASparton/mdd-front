@@ -7,12 +7,12 @@ import { ApiUserService } from '../services/apiUser.service';
 import { InputValidationService } from '../services/inputValidation.service';
 
 // Types
-import { UpdateUserQuery } from '../types/types';
+import { UpdateUserQuery } from '../types';
 
 @Component({
     selector: 'profile-setup',
-    templateUrl: './profileSetup.component.html',
-    styleUrls: ['./profileSetup.component.css']
+    templateUrl: './profile-setup.component.html',
+    styleUrls: ['./profile-setup.component.css']
 })
 export class ProfileSetupComponent implements OnInit {
   // Inputs

@@ -7,8 +7,8 @@ import { InputValidationService } from 'src/app/services/inputValidation.service
 
 @Component({
   selector: 'login-form',
-  templateUrl: './loginForm.component.html',
-  styleUrls: ['./loginForm.component.css']
+  templateUrl: './login-form.component.html',
+  styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent {
   constructor(private inputValidationService: InputValidationService,

@@ -17,19 +17,20 @@ import { MenuModule } from 'primeng/menu';
 
 // Developed components
 import { AppComponent } from './app.component';
-import { RootRedirectionComponent } from './rootRedirection.component';
+import { RootRedirectionComponent } from './root-redirection.component';
 import { RegisterComponent } from './register/register.component';
-import { RegisterFormComponent } from './register/registerForm/registerForm.component';
+import { RegisterFormComponent } from './register/register-form/register-form.component';
 import { LoginComponent } from './login/login.component';
-import { LoginFormComponent } from './login/loginForm/loginForm.component';
-import { ProfileSetupComponent } from './profileSetup/profileSetup.component';
+import { LoginFormComponent } from './login/login-form/login-form.component';
+import { ProfileSetupComponent } from './profile-setup/profile-setup.component';
 import { HomeComponent } from './home/home.component';
-import { AppMenuComponent } from './home/appMenu/appMenu.component';
+import { ProfilePicComponent } from './ui-kit/profile-pic/profile-pic.component';
+import { AppMenuComponent } from './home/app-menu/app-menu.component';
 import { AccountComponent } from './home/account/account.component';
 import { FeedComponent } from './home/feed/feed.component';
 import { DiaryComponent } from './home/diary/diary.component';
 import { FriendsComponent } from './home/friends/friends.component';
-import { ServerErrorComponent } from './serverError/serverError.component';
+import { ServerErrorComponent } from './server-error/server-error.component';
 import { TestComponent } from './test/test.component';
 
 // Routes guards
@@ -64,6 +65,7 @@ const routes: Routes = [
     LoginFormComponent,
     ProfileSetupComponent,
     HomeComponent,
+    ProfilePicComponent,
     AppMenuComponent,
     AccountComponent,
     FeedComponent,
