@@ -1,0 +1,3 @@
+.profile-picture {
+    @apply rounded-full border-3 border-slate-700 object-cover;
+}

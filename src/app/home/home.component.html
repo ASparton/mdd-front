@@ -5,8 +5,11 @@
         </div>
         <div class="right-menu">
             <button type="button" class="pi pi-plus new-entry-btn" (mouseenter)="menu.hide()"></button>
-            <img [src]="profilePictureUrl ? profilePictureUrl : '../../assets/images/default-user-white.png'" 
-                 alt="Profile picture" class="profile-pic" (mouseenter)="menu.show($event)" />
+            <profile-pic [imgSrc]="profilePictureUrl" 
+                         [username]="username"
+                         class="profile-pic" 
+                         (mouseenter)="menu.show($event)">
+            </profile-pic>
             <p-menu #menu [popup]="true" [model]="userMenu" (mouseleave)="menu.hide()" [style]="{'margin-top': '3px'}"></p-menu>
         </div>
     </nav>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import axios from 'axios';
 
 // Types
-import { UpdateUserQuery } from '../types/types';
+import { UpdateUserQuery } from '../types';
 
 @Injectable({
   providedIn: 'root'

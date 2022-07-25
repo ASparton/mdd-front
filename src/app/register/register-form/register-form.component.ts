@@ -7,8 +7,8 @@ import { InputValidationService } from 'src/app/services/inputValidation.service
 
 @Component({
   selector: 'register-form',
-  templateUrl: './registerForm.component.html',
-  styleUrls: ['./registerForm.component.css']
+  templateUrl: './register-form.component.html',
+  styleUrls: ['./register-form.component.css']
 })
 export class RegisterFormComponent {
   // Form inputs value
