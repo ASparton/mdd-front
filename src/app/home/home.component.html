@@ -1,0 +1,15 @@
+<header class="header" (mouseleave)="menu.hide()">
+    <nav aria-label="Header navigation" class="header-nav">
+        <div>
+            <a routerLink="" class="mdd-title">My Daily Diary</a>
+        </div>
+        <div class="right-menu">
+            <button type="button" class="pi pi-plus new-entry-btn" (mouseenter)="menu.hide()"></button>
+            <img [src]="profilePictureUrl ? profilePictureUrl : '../../assets/images/default-user-white.png'" 
+                 alt="Profile picture" class="profile-pic" (mouseenter)="menu.show($event)" />
+            <p-menu #menu [popup]="true" [model]="userMenu" (mouseleave)="menu.hide()" [style]="{'margin-top': '3px'}"></p-menu>
+        </div>
+    </nav>
+</header>
+
+<router-outlet></router-outlet>

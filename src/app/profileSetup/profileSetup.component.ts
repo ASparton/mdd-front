@@ -34,7 +34,7 @@ export class ProfileSetupComponent implements OnInit {
    */
   ngOnInit(): void {
     this.apiAuthService.isFullyAuthenticated()
-      .then(isFullyAuthenticated => isFullyAuthenticated && this.router.navigate(['/feed']))
+      .then(isFullyAuthenticated => isFullyAuthenticated && this.router.navigate(['app/feed']))
       .catch(_ => this.router.navigate(['/internal-server-error']));
   }
 
@@ -80,7 +80,7 @@ export class ProfileSetupComponent implements OnInit {
   }
 
   /**
-   * If all needed inputs are valid, update the user profile and go on to the app (/feed).
+   * If all needed inputs are valid, update the user profile and go on to (app/feed).
    */
   onContinueClick(): void {
     if (this.formIsValid()) {
@@ -90,7 +90,7 @@ export class ProfileSetupComponent implements OnInit {
       if (this.bio) updates.bio = this.bio;
 
       this.apiUserService.updateUser(updates)
-        .then(_ => this.router.navigate(['/feed']))
+        .then(_ => this.router.navigate(['app/feed']))
         .catch(_ => this.router.navigate(['/internal-server-error']));
     }
   }

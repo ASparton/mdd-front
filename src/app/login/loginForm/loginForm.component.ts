@@ -61,7 +61,7 @@ export class LoginFormComponent {
         .then(response => {
           // If successful, store the auth token and go to the feed page
           localStorage.setItem('token', response.data.token);
-          this.router.navigate(['/feed']);
+          this.router.navigate(['app/feed']);
         })
         .catch(error => {
           // Else check errors and indicate what is wrong to user

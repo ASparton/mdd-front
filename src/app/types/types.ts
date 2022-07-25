@@ -6,3 +6,10 @@ export interface UpdateUserQuery {
     profilePicture?: string | null;
     bio?: string | null;
 }
+
+export enum AppMenuTab {
+    None = 0,
+    Feed = 1,
+    Diary = 2,
+    Friends = 3
+}
